@@ -1,0 +1,14 @@
+
+loggin:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            repository:
+              query: DEBUG
+
+spring:
+  data:
+    mongodb:
+      uri:'mongodb://localhost:27017/invoice_db'

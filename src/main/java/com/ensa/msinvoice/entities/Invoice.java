@@ -4,11 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import java.time.LocalDate;
+import java.util.List;
+
 
 @Document(collection="Invoice")
 @Data
@@ -22,10 +26,11 @@ public class Invoice {
     private String id;
     private String reference;
 
-//    String pattern = "MM-dd-yyyy";
-//    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-    private String dateFacture;
+    @DateTimeFormat(style = "dd-MM-yyyy")
+    private LocalDate dateFacture;
 
+    private Client client;
 
+    private List<Product> products;
 
 }
