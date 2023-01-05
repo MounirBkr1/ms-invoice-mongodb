@@ -1,0 +1,5 @@
+it's a micro service with exception management ,this project is done with: 
+   -spring boot version : 2.7.7
+   -open api v: 1.6.8
+   -spring security
+   -java 17
