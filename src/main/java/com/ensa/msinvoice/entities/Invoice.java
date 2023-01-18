@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
+import javax.persistence.ManyToMany;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class Invoice {
 
     private Client client;
 
+    @ManyToMany(mappedBy ="invoice")
     private List<Product> products;
 
 }

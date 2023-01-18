@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 @Data
 @NoArgsConstructor
@@ -24,4 +25,7 @@ public class Product {
     private long depositQuantity;
     @DateTimeFormat(style = "dd-MM-yyyy")
     private LocalDate expiryDate;;
+
+    @OneToMany
+    private Invoice invoice;
 }

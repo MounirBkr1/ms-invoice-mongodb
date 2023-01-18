@@ -11,4 +11,5 @@ loggin:
 spring:
   data:
     mongodb:
-      uri:'mongodb://localhost:27017/invoice_db'
+      #uri:'mongodb://localhost:27017/invoice_db'
+      #uri: 'mongodb+srv://miirbri1:Mounir15429@ms-invoice.m6naiks.mongodb.net/?retryWrites=true&w=majority'
