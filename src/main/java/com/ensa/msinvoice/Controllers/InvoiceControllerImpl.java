@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:8083")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/")
 public class InvoiceControllerImpl implements InvoiceController {
@@ -27,8 +27,6 @@ public class InvoiceControllerImpl implements InvoiceController {
     @Override
     public ResponseEntity<List<Invoice>> getAllInvoices() {
         List<Invoice> invoices =  invoiceService.getAllInvoices();
-
-
         return new ResponseEntity<>(invoices, HttpStatus.OK);
     }
 
@@ -41,11 +39,18 @@ public class InvoiceControllerImpl implements InvoiceController {
         return ResponseEntity.ok(invoiceFinded);
     }
 
+    @GetMapping("/search/{designation}")
+    public ResponseEntity<List<Invoice>> getProductByDesignation(@PathVariable String reference) {
+        List<Invoice> products = invoiceService.getProductByDesignation(reference);
+        return ResponseEntity.ok(products) ;
+    }
+
 
 
     @PostMapping("/addInvoice")
     @Override
     public ResponseEntity<Invoice> addInvoice(@RequestBody Invoice invoice) {
+        System.out.println(invoice.toString());
         Invoice invoiceToAdd=invoiceService.addInvoice(invoice);
          return ResponseEntity.ok(invoiceToAdd);
     }

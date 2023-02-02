@@ -9,14 +9,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Client {
+public class Customer {
 
-    private long id;
+    private String id;
     private String firstName;
     private String lastName;
     private String email;
     private String address;
     private String city;
-    private String phone;
+
 
 }

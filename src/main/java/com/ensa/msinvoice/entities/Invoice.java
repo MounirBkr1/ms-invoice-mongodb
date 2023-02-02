@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
-import javax.persistence.ManyToMany;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,14 +24,19 @@ public class Invoice {
 
     @Id
     private String id;
-    private String reference;
 
+    private String reference;
     @DateTimeFormat(style = "dd-MM-yyyy")
     private LocalDate dateFacture;
+    private double decompte;
+    private double sommeGlobale;
 
-    private Client client;
 
-    @ManyToMany(mappedBy ="invoice")
+
+
+    private Customer customer;
+
+
     private List<Product> products;
 
 }

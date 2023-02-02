@@ -27,6 +27,8 @@ public interface InvoiceService {
 
     Page<Invoice> findByDateFactureBetween(LocalDate startDate, LocalDate endDate, int page, int size);
 
+    List<Invoice> getProductByDesignation(String designation);
+
 //     public List<Invoice> findByName(String name);
 //     public List<Invoice> findByNameAndReference(String name,String reference);
 }

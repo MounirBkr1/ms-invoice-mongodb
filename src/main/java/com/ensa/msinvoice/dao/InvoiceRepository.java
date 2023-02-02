@@ -19,6 +19,10 @@ public interface InvoiceRepository extends MongoRepository<Invoice,String> {
 
     Page<Invoice> findByDateFactureBetween(LocalDate startDate, LocalDate endDate, PageRequest of);
 
+    @Query(value = "{'reference': {$regex: ?0, $options: 'i'}}")
+    public List<Invoice> findProductByDesignation(String designation);
+    public Invoice findProductById(Long id);
+
 //    @Query("{'name': ?0}")
 //    List<Invoice> findByName(String name, Sort sort);
 //

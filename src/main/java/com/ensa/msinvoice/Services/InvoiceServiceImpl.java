@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +32,8 @@ public class InvoiceServiceImpl implements InvoiceService{
         Optional<Invoice> invoiceToAdd=invoiceRepository.findById(invoice.getId());
         if(!invoiceToAdd.isEmpty()) throw new IdAlreadyExistInvoiceException("Invoice id already exist!");
 
+
+        invoice.setReference(invoice.getReference() +"-Ref");
              return  invoiceRepository.save(invoice);
     }
 
@@ -75,6 +78,14 @@ public class InvoiceServiceImpl implements InvoiceService{
         return invoiceRepository.findByDateFactureBetween(startDate, endDate, PageRequest.of(page, size));
     }
 
+    @Override
+    public List<Invoice> getProductByDesignation(String reference) {
+        List<Invoice> products = invoiceRepository.findProductByDesignation(reference);
+        if(products.isEmpty() ){
+            throw new EntityNotFoundException("cannot find any product with the designation" + " " + reference);
+        }
+        return products;
+    }
 
 //    @Override
 //    public List<Invoice> findByName(String name) {
